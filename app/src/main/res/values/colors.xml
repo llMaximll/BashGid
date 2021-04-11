@@ -10,4 +10,5 @@
     <color name="status_bar">#1E4750</color>
     <color name="tool_bar">#2B616D</color>
     <color name="button">#2B616D</color>
+    <color name="text_white">#EBEBEB</color>
 </resources>

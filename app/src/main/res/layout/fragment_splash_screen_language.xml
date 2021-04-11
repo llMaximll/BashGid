@@ -59,7 +59,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="20dp"
-            android:src="@drawable/bashkortostan_flag" />
+            android:src="@drawable/ic_bashkortostan_flag" />
 
         <ImageView
             android:layout_width="wrap_content"
