@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BashGid</string>
+    <string name="cities">.</string>
+    <string name="monuments">.</string>
+    <string name="reserves">.</string>
+    <string name="city_title_agidel">.</string>
+    <string name="city_title_baimak">.</string>
+    <string name="city_agidel_general">.</string>
+    <string name="city_agidel_geography">.</string>
+    <string name="city_agidel_history">.</string>
+    <string name="city_agidel_population">.</string>
+    <string name="city_agidel_attractions">.</string>
+    <string name="city_baimak_general">.</string>
+    <string name="city_baimak_geography">.</string>
+    <string name="city_baimak_history">.</string>
+    <string name="city_baimak_population">.</string>
+    <string name="city_baimak_attractions">.</string>
+</resources>

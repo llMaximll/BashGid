@@ -4,12 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.github.llmaximll.bashgid.fragments.*
@@ -53,7 +50,7 @@ class MainActivity : AppCompatActivity(),
                 fragment = HistoryFragment.newInstance()
             }
             2 -> {
-
+                fragment = TestFragment.newInstance()
             }
             3 -> {
                 fragment = SettingsFragment.newInstance()
@@ -93,44 +90,61 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    override fun onHistoryFragment(category: String, position: Int, imageView: ImageView, linearLayout: ViewGroup) {
+    override fun onHistoryFragment(categoryInt: Int, positionInt: Int, imageView: ImageView, linearLayout: ViewGroup) {
         var fragment: Fragment? = null
-        when (category) {
-            "Cities" -> {
-                when (position) {
-                    0 -> {
-                        Log.i(TAG, "Cities")
-                        fragment = DetailsFragment.newInstance("Monuments", 1, imageView.transitionName,
-                                linearLayout.transitionName)
-                    }
+        when (categoryInt) {
+            0 -> {
+                when (positionInt) {
+                    0 -> fragment = DetailsFragment.newInstance(0, 0, imageView.transitionName, linearLayout.transitionName)
+                    1 -> fragment = DetailsFragment.newInstance(0, 1, imageView.transitionName, linearLayout.transitionName)
+                    2 -> fragment = DetailsFragment.newInstance(0, 2, imageView.transitionName, linearLayout.transitionName)
+                    3 -> fragment = DetailsFragment.newInstance(0, 3, imageView.transitionName, linearLayout.transitionName)
+                    4 -> fragment = DetailsFragment.newInstance(0, 4, imageView.transitionName, linearLayout.transitionName)
+                    5 -> fragment = DetailsFragment.newInstance(0, 5, imageView.transitionName, linearLayout.transitionName)
+                    6 -> fragment = DetailsFragment.newInstance(0, 6, imageView.transitionName, linearLayout.transitionName)
+                    7 -> fragment = DetailsFragment.newInstance(0, 7, imageView.transitionName, linearLayout.transitionName)
+                    8 -> fragment = DetailsFragment.newInstance(0, 8, imageView.transitionName, linearLayout.transitionName)
                 }
             }
-            "Monuments" -> {
-                when (position) {
-                    0 -> {
-                        Log.i(TAG, "Monuments")
-                        fragment = DetailsFragment.newInstance("Monuments", 1, imageView.transitionName,
-                                linearLayout.transitionName)
-                    }
+            1 -> {
+                when (positionInt) {
+                    0 -> fragment = DetailsFragment.newInstance(1, 0, imageView.transitionName, linearLayout.transitionName)
+                    1 -> fragment = DetailsFragment.newInstance(1, 1, imageView.transitionName, linearLayout.transitionName)
+                    2 -> fragment = DetailsFragment.newInstance(1, 2, imageView.transitionName, linearLayout.transitionName)
+                    3 -> fragment = DetailsFragment.newInstance(1, 3, imageView.transitionName, linearLayout.transitionName)
+                    4 -> fragment = DetailsFragment.newInstance(1, 4, imageView.transitionName, linearLayout.transitionName)
+                    5 -> fragment = DetailsFragment.newInstance(1, 5, imageView.transitionName, linearLayout.transitionName)
+                    6 -> fragment = DetailsFragment.newInstance(1, 6, imageView.transitionName, linearLayout.transitionName)
+                    7 -> fragment = DetailsFragment.newInstance(1, 7, imageView.transitionName, linearLayout.transitionName)
+                    8 -> fragment = DetailsFragment.newInstance(1, 8, imageView.transitionName, linearLayout.transitionName)
                 }
             }
-            "Reserves" -> {
-                when (position) {
-                    0 -> {
-                        Log.i(TAG, "Monuments")
-                        fragment = DetailsFragment.newInstance("Monuments", 1, imageView.transitionName,
-                                linearLayout.transitionName)
-                    }
+            2 -> {
+                when (positionInt) {
+                    0 -> fragment = DetailsFragment.newInstance(2, 0, imageView.transitionName, linearLayout.transitionName)
+                    1 -> fragment = DetailsFragment.newInstance(2, 1, imageView.transitionName, linearLayout.transitionName)
+                    2 -> fragment = DetailsFragment.newInstance(2, 2, imageView.transitionName, linearLayout.transitionName)
+                    3 -> fragment = DetailsFragment.newInstance(2, 3, imageView.transitionName, linearLayout.transitionName)
+                    4 -> fragment = DetailsFragment.newInstance(2, 4, imageView.transitionName, linearLayout.transitionName)
+                    5 -> fragment = DetailsFragment.newInstance(2, 5, imageView.transitionName, linearLayout.transitionName)
+                    6 -> fragment = DetailsFragment.newInstance(2, 6, imageView.transitionName, linearLayout.transitionName)
+                    7 -> fragment = DetailsFragment.newInstance(2, 7, imageView.transitionName, linearLayout.transitionName)
+                    8 -> fragment = DetailsFragment.newInstance(2, 8, imageView.transitionName, linearLayout.transitionName)
                 }
+            }
+            else -> {
+                Log.i(TAG, "Null")
+                fragment = DetailsFragment.newInstance(-1, 0,
+                        imageView.transitionName, linearLayout.transitionName)
             }
         }
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.container_fragment)
         supportFragmentManager.commit {
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.container_fragment)
-            hide(currentFragment!!)
-            add(R.id.container_fragment, fragment!!)
+            setReorderingAllowed(true)
             addSharedElement(imageView, imageView.transitionName)
             addSharedElement(linearLayout, linearLayout.transitionName)
-            setReorderingAllowed(true)
+            add(R.id.container_fragment, fragment!!)
+            hide(currentFragment!!)
             addToBackStack(null)
         }
     }

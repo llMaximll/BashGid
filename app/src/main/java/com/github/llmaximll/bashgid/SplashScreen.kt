@@ -1,17 +1,19 @@
 package com.github.llmaximll.bashgid
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 
 private const val NAME_SHARED_PREFERENCES = "first_launch"
 
@@ -35,11 +37,79 @@ class SplashScreen : AppCompatActivity() {
         viewPager.adapter = PagerAdapter()
     }
 
+    private fun View.touchListener(mode: Int) {
+        this.setOnTouchListener { it, motionEvent ->
+            when (motionEvent.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    animateView(it, false)
+                }
+                MotionEvent.ACTION_CANCEL -> {
+                    animateView(it, true)
+                }
+                MotionEvent.ACTION_UP -> {
+                    when (mode) {
+                        1 -> {
+                            animateView(it, true)
+                            snackBar("Выбран русский язык")
+                        }
+                        2 -> {
+                            animateView(it, true)
+                            snackBar("Выбран башкирский язык")
+                        }
+                        3 -> {
+                            animateView(it, true)
+                            snackBar("Выбран английский язык")
+                        }
+                    }
+                    it.performClick()
+                }
+            }
+            true
+        }
+    }
+
+    private fun animateView(view: View, reverse: Boolean) {
+        if (!reverse) {
+            val animatorX = ObjectAnimator.ofFloat(view, "scaleX", 0.95f)
+            val animatorY = ObjectAnimator.ofFloat(view, "scaleY", 0.95f)
+            AnimatorSet().apply {
+                playTogether(animatorX, animatorY)
+                duration = 150
+                start()
+            }
+        } else {
+            val animatorX = ObjectAnimator.ofFloat(view, "scaleX", 1.0f)
+            val animatorY = ObjectAnimator.ofFloat(view, "scaleY", 1.0f)
+            AnimatorSet().apply {
+                playTogether(animatorX, animatorY)
+                duration = 150
+                start()
+            }
+        }
+    }
+
+    private fun snackBar(message: String) {
+        val snackBar = Snackbar.make(
+                this.findViewById(R.id.russia),
+                message,
+                Snackbar.LENGTH_LONG
+        )
+        snackBar.show()
+    }
+
     inner class PagerHolder(itemView: View)
         : RecyclerView.ViewHolder(itemView) {
 
             fun bind(mode: Int) {
                 when (mode) {
+                    0 -> {
+                        val russiaButton: ImageView = itemView.findViewById(R.id.russia)
+                        val bashButton: ImageView = itemView.findViewById(R.id.bashkortostan)
+                        val englandButton: ImageView = itemView.findViewById(R.id.united_kingdom)
+                        russiaButton.touchListener(1)
+                        bashButton.touchListener(2)
+                        englandButton.touchListener(3)
+                    }
                     3 -> {
                         val button: Button = itemView.findViewById(R.id.button)
                         button.setOnClickListener {
@@ -101,10 +171,11 @@ class SplashScreen : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: PagerHolder, position: Int) {
-            when (count) {
-                3 -> {
-                    holder.bind(3)
+            when (position) {
+                0 -> {
+                    holder.bind(0)
                 }
+                3 -> holder.bind(3)
             }
         }
 

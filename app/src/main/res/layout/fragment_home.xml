@@ -16,7 +16,7 @@
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:id="@+id/frameLayout"
+            android:id="@+id/frame_layout_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -38,6 +38,19 @@
                 android:textSize="64sp" />
 
         </FrameLayout>
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/gerb_respubliki_bashkortostan"
+            app:layout_constraintBottom_toTopOf="@id/frame_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frame_layout_0" />
 
         <FrameLayout
             android:id="@+id/frame_layout"
