@@ -8,9 +8,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.github.llmaximll.bashgid.OnBackPressedFragment
 import com.github.llmaximll.bashgid.R
 
-class DonateFragment : Fragment() {
+class DonateFragment : Fragment(), OnBackPressedFragment {
 
     private lateinit var coffeeFrameLayout: ViewGroup
     private lateinit var fastFoodFrameLayout: ViewGroup
@@ -38,6 +39,10 @@ class DonateFragment : Fragment() {
         fastFoodFrameLayout.touchListener(2)
         soupFrameLayout.touchListener(3)
         dinnerFrameLayout.touchListener(4)
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 
     private fun View.touchListener(button: Int) {

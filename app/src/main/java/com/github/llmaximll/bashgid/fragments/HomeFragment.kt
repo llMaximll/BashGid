@@ -3,17 +3,20 @@ package com.github.llmaximll.bashgid.fragments
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.github.llmaximll.bashgid.OnBackPressedFragment
 import com.github.llmaximll.bashgid.R
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), OnBackPressedFragment {
 
     interface Callbacks {
-        fun onHomeFragment(mode: Int)
+        fun onHomeFragment(mode: Int, backPressed: Boolean)
     }
 
     private lateinit var historyFrameLayout: ViewGroup
@@ -21,6 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var settingsFrameLayout: ViewGroup
 
     private var callbacks: Callbacks? = null
+    private var backPressed = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,6 +57,19 @@ class HomeFragment : Fragment() {
         callbacks = null
     }
 
+    override fun onBackPressed(): Boolean {
+        callbacks?.onHomeFragment(-1, true)
+        return false
+    }
+
+    private inner class BackPressedTimer : CountDownTimer(2000L, 2000L) {
+        override fun onTick(time: Long) {
+        }
+        override fun onFinish() {
+            backPressed = false
+        }
+    }
+
     private fun View.touchListener(mode: Int) {
         this.setOnTouchListener { it, motionEvent ->
             when (motionEvent.action) {
@@ -66,15 +83,15 @@ class HomeFragment : Fragment() {
                     when (mode) {
                         1 -> {
                             animateView(it, true)
-                            callbacks?.onHomeFragment(1)
+                            callbacks?.onHomeFragment(1, false)
                         }
                         2 -> {
                             animateView(it, true)
-                            callbacks?.onHomeFragment(2)
+                            callbacks?.onHomeFragment(2, false)
                         }
                         3 -> {
                             animateView(it, true)
-                            callbacks?.onHomeFragment(3)
+                            callbacks?.onHomeFragment(3, false)
                         }
                     }
                     it.performClick()

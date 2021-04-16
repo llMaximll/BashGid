@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.github.llmaximll.bashgid.OnBackPressedFragment
 import com.github.llmaximll.bashgid.R
 import com.github.llmaximll.bashgid.dataclasses.ItemInnerHistory
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +23,7 @@ import kotlin.random.Random
 
 private const val TAG = "HistoryFragment"
 
-class HistoryFragment : Fragment() {
+class HistoryFragment : Fragment(), OnBackPressedFragment {
 
     interface Callbacks {
         fun onHistoryFragment(categoryInt: Int, positionInt: Int, imageView: ImageView, linearLayout: ViewGroup)
@@ -114,6 +115,10 @@ class HistoryFragment : Fragment() {
         super.onDetach()
         callbacks = null
         pagerCallback(viewPager, true)
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 
     private fun pagerCallback(viewPager2: ViewPager2, remove: Boolean) {

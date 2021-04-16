@@ -4,17 +4,19 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.github.llmaximll.bashgid.OnBackPressedFragment
 import com.github.llmaximll.bashgid.R
 
 private const val TAG = "SettingsFragment"
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(), OnBackPressedFragment {
 
     interface Callbacks {
         fun onSettingsFragment(mode: Int)
@@ -67,6 +69,10 @@ class SettingsFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         callbacks = null
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 
     private fun View.touchListener(mode: Int) {

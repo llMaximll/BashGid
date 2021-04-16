@@ -9,10 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.*
+import com.github.llmaximll.bashgid.OnBackPressedFragment
 import com.github.llmaximll.bashgid.R
 import com.github.llmaximll.bashgid.dataclasses.DatabaseClass
 
@@ -23,7 +23,7 @@ private const val KEY_T_NAME_LINEAR_LAYOUT = "transition_name_linear_layout"
 
 private const val TAG = "DetailsFragment"
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : Fragment(), OnBackPressedFragment {
 
     private val viewModel: com.github.llmaximll.bashgid.viewmodels.DetailsFragment by lazy {
         ViewModelProvider(this).get(com.github.llmaximll.bashgid.viewmodels.DetailsFragment::class.java)
@@ -225,6 +225,10 @@ class DetailsFragment : Fragment() {
         } else if (!isNew) {
             viewModel.saveDatabaseClass(databaseClass)
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        return true
     }
 
     private fun updateUI(databaseClass: DatabaseClass) {

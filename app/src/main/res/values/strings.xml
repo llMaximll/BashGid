@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">BashGid</string>
+    <string name="result">Результат</string>
     <string name="cities">Города</string>
     <string name="monuments">Памятники</string>
-    <string name="reserves">Города</string>
+    <string name="reserves">Заповедники</string>
     <string name="city_title_agidel">Агидель</string>
     <string name="city_title_baimak">Баймак</string>
     <string name="city_title_belebei">Белебей</string>

@@ -16,16 +16,19 @@ private const val TAG = "MainActivity"
 private const val NAME_SHARED_PREFERENCES = "first_launch"
 
 class MainActivity : AppCompatActivity(),
-    HomeFragment.Callbacks,
-    SettingsFragment.Callbacks,
-    HistoryFragment.Callbacks {
+        HomeFragment.Callbacks,
+        SettingsFragment.Callbacks,
+        HistoryFragment.Callbacks,
+        TestFragment.Callbacks,
+        TestDetailsFragment.Callbacks,
+        ResultTestFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val sharedPreference =
-            getSharedPreferences(NAME_SHARED_PREFERENCES, Context.MODE_PRIVATE)
+                getSharedPreferences(NAME_SHARED_PREFERENCES, Context.MODE_PRIVATE)
         val firstLaunch = sharedPreference.getBoolean(NAME_SHARED_PREFERENCES, false)
         if (!firstLaunch) {
             val intent = Intent(this, SplashScreen::class.java)
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity(),
             finish()
         } else {
             val currentFragment = supportFragmentManager
-                .findFragmentById(R.id.container_fragment)
+                    .findFragmentById(R.id.container_fragment)
             if (currentFragment == null) {
                 val fragment = HomeFragment.newInstance()
                 supportFragmentManager.commit {
@@ -43,28 +46,41 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    override fun onHomeFragment(mode: Int) {
-        var fragment: Fragment? = null
-        when (mode) {
-            1 -> {
-                fragment = HistoryFragment.newInstance()
-            }
-            2 -> {
-                fragment = TestFragment.newInstance()
-            }
-            3 -> {
-                fragment = SettingsFragment.newInstance()
+    override fun onBackPressed() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.container_fragment)
+        (fragment as? OnBackPressedFragment)?.onBackPressed()?.let {
+            if (it) {
+                super.onBackPressed()
             }
         }
-        supportFragmentManager.commit {
-            setCustomAnimations(
-                    android.R.animator.fade_in,
-                    android.R.animator.fade_out,
-                    android.R.animator.fade_in,
-                    android.R.animator.fade_out
-            )
-            replace(R.id.container_fragment, fragment!!)
-            addToBackStack(null)
+    }
+
+    override fun onHomeFragment(mode: Int, backPressed: Boolean) {
+        if (!backPressed) {
+            var fragment: Fragment? = null
+            when (mode) {
+                1 -> {
+                    fragment = HistoryFragment.newInstance()
+                }
+                2 -> {
+                    fragment = TestFragment.newInstance()
+                }
+                3 -> {
+                    fragment = SettingsFragment.newInstance()
+                }
+            }
+            supportFragmentManager.commit {
+                setCustomAnimations(
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out,
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out
+                )
+                replace(R.id.container_fragment, fragment!!)
+                addToBackStack(null)
+            }
+        } else {
+            finish()
         }
     }
 
@@ -147,5 +163,68 @@ class MainActivity : AppCompatActivity(),
             hide(currentFragment!!)
             addToBackStack(null)
         }
+    }
+
+    override fun onTestFragment(position: Int) {
+        val fragment = TestDetailsFragment.newInstance(position)
+        supportFragmentManager.commit {
+            setCustomAnimations(
+                    android.R.animator.fade_in,
+                    android.R.animator.fade_out,
+                    android.R.animator.fade_in,
+                    android.R.animator.fade_out
+            )
+            replace(R.id.container_fragment, fragment)
+            addToBackStack(null)
+        }
+    }
+
+    override fun onTestDetails(position: Int, mode: Int) {
+        var fragment: Fragment? = null
+        when (mode) {
+            0 -> {
+                fragment = if (testAnswersList.size >= 20) {
+                    ResultTestFragment.newInstance()
+                } else {
+                    TestDetailsFragment.newInstance(position)
+                }
+            }
+            1 -> {
+                fragment = HomeFragment.newInstance()
+            }
+        }
+        supportFragmentManager.commit {
+            setCustomAnimations(
+                    android.R.animator.fade_in,
+                    android.R.animator.fade_out,
+                    android.R.animator.fade_in,
+                    android.R.animator.fade_out
+            )
+            replace(R.id.container_fragment, fragment!!)
+        }
+    }
+
+    override fun onResultTest(backPressed: Boolean) {
+        if (backPressed) {
+            val fragment = HomeFragment.newInstance()
+            supportFragmentManager.commit {
+                setCustomAnimations(
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out,
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out
+                )
+                replace(R.id.container_fragment, fragment)
+            }
+        }
+    }
+
+    companion object {
+        val testAnswersList = mutableListOf<Int>()
+        var test = -1
+        var question = -1
+        val testCityList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
+        val testMonumentList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
+        val testReserveList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
     }
 }
