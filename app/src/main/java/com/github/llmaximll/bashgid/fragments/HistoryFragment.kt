@@ -58,7 +58,7 @@ class HistoryFragment : Fragment() {
         citiesList = listOf(
                 ItemInnerHistory(resources.getString(R.string.city_title_agidel), "Content City 1", 0),
                 ItemInnerHistory(resources.getString(R.string.city_title_baimak), "Content City 2", 1),
-                ItemInnerHistory("Title City 3", "Content City 3"),
+                ItemInnerHistory(resources.getString(R.string.city_title_belebei), "Content City 3", 2),
                 ItemInnerHistory("Title City 4", "Content City 4"),
                 ItemInnerHistory("Title City 5", "Content City 5"),
                 ItemInnerHistory("Title City 6", "Content City 6"),
@@ -173,6 +173,7 @@ class HistoryFragment : Fragment() {
             when (itemInnerHistory.imageInt) {
                 0 -> imageView.setImageResource(R.drawable.agidel)
                 1 -> imageView.setImageResource(R.drawable.baimak)
+                2 -> imageView.setImageResource(R.drawable.belebei)
                 else -> imageView.setBackgroundResource(R.drawable.baimak)
             }
         }

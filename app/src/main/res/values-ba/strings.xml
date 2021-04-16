@@ -5,6 +5,8 @@
     <string name="reserves">.</string>
     <string name="city_title_agidel">.</string>
     <string name="city_title_baimak">.</string>
+    <string name="city_title_belebei">.</string>
+    <string name="city_title_beloreck">.</string>
     <string name="city_agidel_general">.</string>
     <string name="city_agidel_geography">.</string>
     <string name="city_agidel_history">.</string>
@@ -15,4 +17,11 @@
     <string name="city_baimak_history">.</string>
     <string name="city_baimak_population">.</string>
     <string name="city_baimak_attractions">.</string>
+    <string name="city_belebei_general">.</string>
+    <string name="city_belebei_geography">.</string>
+    <string name="city_belebei_history">.</string>
+    <string name="city_belebei_population">.</string>
+    <string name="city_belebei_attractions">.</string>
+    <string name="city_beloreck_general">.</string>
+    <string name="city_beloreck_geography">.</string>
 </resources>
