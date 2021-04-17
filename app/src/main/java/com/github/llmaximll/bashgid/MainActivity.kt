@@ -193,14 +193,20 @@ class MainActivity : AppCompatActivity(),
                 fragment = HomeFragment.newInstance()
             }
         }
-        supportFragmentManager.commit {
-            setCustomAnimations(
-                    android.R.animator.fade_in,
-                    android.R.animator.fade_out,
-                    android.R.animator.fade_in,
-                    android.R.animator.fade_out
-            )
-            replace(R.id.container_fragment, fragment!!)
+        if (testAnswersList.size >= 20) {
+            supportFragmentManager.commit {
+                setCustomAnimations(
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out,
+                        android.R.animator.fade_in,
+                        android.R.animator.fade_out
+                )
+                replace(R.id.container_fragment, fragment!!)
+            }
+        } else {
+            supportFragmentManager.commit {
+                replace(R.id.container_fragment, fragment!!)
+            }
         }
     }
 
@@ -222,9 +228,6 @@ class MainActivity : AppCompatActivity(),
     companion object {
         val testAnswersList = mutableListOf<Int>()
         var test = -1
-        var question = -1
-        val testCityList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
-        val testMonumentList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
-        val testReserveList = listOf(1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4)
+        var question = 0
     }
 }

@@ -22,6 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:padding="8dp"
         android:background="@drawable/background_test_details"
         app:layout_constraintBottom_toTopOf="@id/f_l_3"
         app:layout_constraintEnd_toStartOf="@id/f_l_2"
@@ -33,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/text_white"
             android:textSize="20sp"/>
@@ -44,6 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:padding="8dp"
         android:background="@drawable/background_test_details"
         app:layout_constraintBottom_toTopOf="@id/f_l_4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/text_white"
             android:textSize="20sp"/>
@@ -66,6 +70,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:padding="8dp"
         android:background="@drawable/background_test_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/f_l_4"
@@ -77,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/text_white"
             android:textSize="20sp"/>
@@ -88,6 +94,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:padding="8dp"
         android:background="@drawable/background_test_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/text_white"
             android:textSize="20sp"/>

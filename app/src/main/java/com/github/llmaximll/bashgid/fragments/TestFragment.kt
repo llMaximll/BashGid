@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,12 +27,13 @@ class TestFragment : Fragment(), OnBackPressedFragment {
     }
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var toolBar: Toolbar
 
     private val testList: List<ItemTest> = listOf(
-            ItemTest("Города", "Content 1"),
-            ItemTest("Памятники", "Content 2"),
-            ItemTest("Заповедники", "Content 3"),
-            ItemTest("Смешанное", "Content 4")
+            ItemTest("Города", ""),
+            ItemTest("Памятники", ""),
+            ItemTest("Заповедники", ""),
+            ItemTest("Смешанное", "")
     )
 
     private var callbacks: Callbacks? = null
@@ -44,11 +47,18 @@ class TestFragment : Fragment(), OnBackPressedFragment {
         val view = inflater.inflate(R.layout.fragment_test, container, false)
 
         recyclerView = view.findViewById(R.id.recycler_view)
+        toolBar = view.findViewById(R.id.tool_bar)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = TestAdapter(testList)
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        toolBar.title = resources.getString(R.string.tests)
+        toolBar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.text_white))
     }
 
     override fun onDetach() {

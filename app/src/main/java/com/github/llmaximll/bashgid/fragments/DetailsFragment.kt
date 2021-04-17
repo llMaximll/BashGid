@@ -131,12 +131,72 @@ class DetailsFragment : Fragment(), OnBackPressedFragment {
                         objectTitle = "city_belebei"
                         viewModel.loadDatabaseClass(objectTitle)
                     }
-                    3 -> imageView.setImageResource(R.drawable.baimak)
-                    4 -> imageView.setImageResource(R.drawable.baimak)
-                    5 -> imageView.setImageResource(R.drawable.baimak)
-                    6 -> imageView.setImageResource(R.drawable.baimak)
-                    7 -> imageView.setImageResource(R.drawable.baimak)
-                    8 -> imageView.setImageResource(R.drawable.baimak)
+                    3 -> {
+                        imageView.setImageResource(R.drawable.beloreck)
+                        toolBarTitle.text = resources.getString(R.string.city_title_beloreck)
+                        generalTextView.text = resources.getString(R.string.city_beloreck_general)
+                        geographyTextView.text = resources.getString(R.string.city_beloreck_geography)
+                        historyTextView.text = resources.getString(R.string.city_beloreck_history)
+                        populationTextView.text = resources.getString(R.string.city_beloreck_population)
+                        attractionsTextView.text = resources.getString(R.string.city_beloreck_attractions)
+                        objectTitle = "city_beloreck"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
+                    4 -> {
+                        imageView.setImageResource(R.drawable.birsk)
+                        toolBarTitle.text = resources.getString(R.string.city_title_birsk)
+                        generalTextView.text = resources.getString(R.string.city_birsk_general)
+                        geographyTextView.text = resources.getString(R.string.city_birsk_geography)
+                        historyTextView.text = resources.getString(R.string.city_birsk_history)
+                        populationTextView.text = resources.getString(R.string.city_birsk_population)
+                        attractionsTextView.text = resources.getString(R.string.city_birsk_attractions)
+                        objectTitle = "city_birsk"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
+                    5 -> {
+                        imageView.setImageResource(R.drawable.belebei)
+                        toolBarTitle.text = resources.getString(R.string.city_title_belebei)
+                        generalTextView.text = resources.getString(R.string.city_belebei_general)
+                        geographyTextView.text = resources.getString(R.string.city_belebei_geography)
+                        historyTextView.text = resources.getString(R.string.city_belebei_history)
+                        populationTextView.text = resources.getString(R.string.city_belebei_population)
+                        attractionsTextView.text = resources.getString(R.string.city_belebei_attractions)
+                        objectTitle = "city_belebei"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
+                    6 -> {
+                        imageView.setImageResource(R.drawable.belebei)
+                        toolBarTitle.text = resources.getString(R.string.city_title_belebei)
+                        generalTextView.text = resources.getString(R.string.city_belebei_general)
+                        geographyTextView.text = resources.getString(R.string.city_belebei_geography)
+                        historyTextView.text = resources.getString(R.string.city_belebei_history)
+                        populationTextView.text = resources.getString(R.string.city_belebei_population)
+                        attractionsTextView.text = resources.getString(R.string.city_belebei_attractions)
+                        objectTitle = "city_belebei"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
+                    7 -> {
+                        imageView.setImageResource(R.drawable.belebei)
+                        toolBarTitle.text = resources.getString(R.string.city_title_belebei)
+                        generalTextView.text = resources.getString(R.string.city_belebei_general)
+                        geographyTextView.text = resources.getString(R.string.city_belebei_geography)
+                        historyTextView.text = resources.getString(R.string.city_belebei_history)
+                        populationTextView.text = resources.getString(R.string.city_belebei_population)
+                        attractionsTextView.text = resources.getString(R.string.city_belebei_attractions)
+                        objectTitle = "city_belebei"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
+                    8 -> {
+                        imageView.setImageResource(R.drawable.belebei)
+                        toolBarTitle.text = resources.getString(R.string.city_title_belebei)
+                        generalTextView.text = resources.getString(R.string.city_belebei_general)
+                        geographyTextView.text = resources.getString(R.string.city_belebei_geography)
+                        historyTextView.text = resources.getString(R.string.city_belebei_history)
+                        populationTextView.text = resources.getString(R.string.city_belebei_population)
+                        attractionsTextView.text = resources.getString(R.string.city_belebei_attractions)
+                        objectTitle = "city_belebei"
+                        viewModel.loadDatabaseClass(objectTitle)
+                    }
                 }
             }
             1 -> {

@@ -57,14 +57,18 @@ class HistoryFragment : Fragment(), OnBackPressedFragment {
         pagerCallback(viewPager, false)
 
         citiesList = listOf(
-                ItemInnerHistory(resources.getString(R.string.city_title_agidel), "Content City 1", 0),
-                ItemInnerHistory(resources.getString(R.string.city_title_baimak), "Content City 2", 1),
-                ItemInnerHistory(resources.getString(R.string.city_title_belebei), "Content City 3", 2),
-                ItemInnerHistory("Title City 4", "Content City 4"),
-                ItemInnerHistory("Title City 5", "Content City 5"),
-                ItemInnerHistory("Title City 6", "Content City 6"),
-                ItemInnerHistory("Title City 7", "Content City 7"),
-                ItemInnerHistory("Title City 8", "Content City 8"),
+                ItemInnerHistory(resources.getString(R.string.city_title_agidel), "", 0),
+                ItemInnerHistory(resources.getString(R.string.city_title_baimak), "", 1),
+                ItemInnerHistory(resources.getString(R.string.city_title_belebei), "", 2),
+                ItemInnerHistory(resources.getString(R.string.city_title_beloreck), "", 3),
+                ItemInnerHistory(resources.getString(R.string.city_title_birsk), "", 4),
+                ItemInnerHistory(resources.getString(R.string.city_title_blagovechensk), "", 5),
+                ItemInnerHistory(resources.getString(R.string.city_title_davlekanovo), "", 6),
+                ItemInnerHistory(resources.getString(R.string.city_title_durtuli), "", 7),
+                ItemInnerHistory(resources.getString(R.string.city_title_kumertay), "", 8),
+                ItemInnerHistory(resources.getString(R.string.city_title_ishimbai), "", 9),
+                ItemInnerHistory(resources.getString(R.string.city_title_meshgorie), "", 10),
+                ItemInnerHistory(resources.getString(R.string.city_title_meleuz), "", 11),
         )
         monumentsList = listOf(
                 ItemInnerHistory("Title Monument 1", "Content Monument 1"),
@@ -179,6 +183,8 @@ class HistoryFragment : Fragment(), OnBackPressedFragment {
                 0 -> imageView.setImageResource(R.drawable.agidel)
                 1 -> imageView.setImageResource(R.drawable.baimak)
                 2 -> imageView.setImageResource(R.drawable.belebei)
+                3 -> imageView.setImageResource(R.drawable.beloreck)
+                4 -> imageView.setImageResource(R.drawable.birsk)
                 else -> imageView.setBackgroundResource(R.drawable.baimak)
             }
         }
